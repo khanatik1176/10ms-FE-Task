@@ -1,8 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![PentadevIX Logo](./public/logo/Logo.webp)
+
+PentadevIX is a robust platform designed for analyzing and managing the performance and scalability of your software projects. It provides insights into bottlenecks, resource utilization, and optimization opportunities across different environments. Users can monitor projects to ensure efficient and high-performing development workflows.
+
+## Features
+
+- **Performance Analysis:** Identify and optimize performance bottlenecks in your project.
+- **Resource Monitoring:** Track resource utilization and scalability metrics.
+- **Environment Insights:** Analyze and compare performance across different environments.
+
+## Branching Strategy
+
+- **Test Branch:** Used for internal testing.
+- **Beta Branch:** Used for client testing.
+- **Development Branch:** Uses the naming convention `pentadevix-client-vX.00.00X`, where X changes based on iteration.
+
+## Configuration
+
+- The backend URLs and important keys/tokens are stored in the `.env` file.
+- After modifying the `.env` file, export the values from `config.ts` for proper integration.
+- An `.env.example` file is provided to illustrate the `.env` file structure.
+
+## Technologies Used
+
+- **Framework:** Next.js
+- **Forms & Validation:** React Hook Form, Yup
+- **UI Components:** Material UI
+- **Networking:** Axios
+- **State Management:** Redux Toolkit
+- **Icons:** FontAwesome
+- **Authentication:** Firebase Auth
+- **Testing:** Cypress, Jest
+- **Code Quality Monitoring:** SonarQube
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +52,95 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The recommended deployment platform is **Netlify**. Refer to the [Netlify Deployment Guide](https://docs.netlify.com/) for more details.
+
+### Deploying with Netlify CLI
+
+1. Install Netlify CLI if you haven’t already:
+   
+   ```bash
+   npm install -g netlify-cli
+   ```
+
+2. Login to Netlify:
+   
+   ```bash
+   netlify login
+   ```
+
+   Follow the prompts to authenticate with your Netlify account.
+
+3. Navigate to your project directory and deploy:
+   
+   ```bash
+   netlify deploy
+   ```
+
+   This will initialize the deployment process and prompt you with options.
+
+4. For deploying updates to production, use:
+   
+   ```bash
+   netlify deploy --prod
+   ```
+
+### Deploying to Development and Preview Environments
+
+- **Development Environment:**
+  
+  ```bash
+  netlify deploy --env development
+  ```
+  
+  This helps in testing changes before pushing them to production.
+
+- **Preview Deployment:**
+  
+  ```bash
+  netlify deploy --branch preview
+  ```
+  
+  This will deploy the branch as a preview, which can be shared and tested before going live.
+
+### Assigning a Custom Domain
+
+- **Add your domain to Netlify:**
+  
+  ```bash
+  netlify domains:add yourdomain.com
+  ```
+
+- **Update your DNS settings** by following the instructions provided by Netlify.
+
+- **Set the domain for production:**
+  
+  ```bash
+  netlify domains:set yourdomain.com
+  ```
+
+- **Verify the domain:**
+  
+  ```bash
+  netlify domains:inspect yourdomain.com
+  ```
+
+### Logging Out
+
+To log out of the Netlify CLI:
+
+```bash
+netlify logout
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
+- [Firebase Documentation](https://firebase.google.com/docs) - Authentication setup.
+- [Redux Toolkit Documentation](https://redux-toolkit.js.org/) - State management.
+- [Netlify Documentation](https://docs.netlify.com/) - Deployment and configuration guidance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+PentadevIX aims to provide seamless performance monitoring and optimization for modern software development workflows.
