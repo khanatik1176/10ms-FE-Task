@@ -67,3 +67,16 @@ export type FeatureSection = {
   order_idx: number;
   values: FeatureValue[];
 };
+
+export type LearningValues = 
+{
+  color: string;
+  icon: string;
+  id: string;
+  text: string;
+};
+
+export type LearningSection = {
+  name: string;
+  values: LearningValues[];
+};

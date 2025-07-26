@@ -1,6 +1,7 @@
 'use client';
 import CourseLaidOutSection from '@/components/CourseLaidOutSection';
 import InstructorArea from '@/components/InstructorArea';
+import LearningArea from '@/components/LearningArea';
 import Navbar from '@/components/Navbar';
 import TitleArea from '@/components/TitleArea';
 import { fetchAllData } from '@/helpers/LandingApi';
@@ -33,6 +34,11 @@ export default function Home() {
   );
   const featureList = featureSection?.values || [];
 
+  const learningSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'pointers'
+  );
+  const learningList = learningSection?.values || [];
+
   return (
     <div className={`min-h-screen`}>
       <Navbar />
@@ -44,15 +50,17 @@ export default function Home() {
         checkList={checkList}
         isLoading={isLoading}
       />
-      <InstructorArea 
-        values={instructorList}
-      />
+      <InstructorArea values={instructorList} />
       <CourseLaidOutSection
         name={featureSection?.name}
         description={featureSection?.description}
         bg_color={featureSection?.bg_color}
         order_idx={featureSection?.order_idx}
         values={featureList}
+      />
+      <LearningArea
+        name={learningSection?.name}
+        values={learningList}
       />
       <div className='p-8'>
         {isLoading && <div>Loading...</div>}
