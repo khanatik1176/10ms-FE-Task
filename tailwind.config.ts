@@ -40,7 +40,7 @@ export default {
         bgPrimary: '#CFE2FD',
         bgWarning: '#FFE4C0',
         bgSuccess: '#B1EEB9',
-        primaryHover: '#255394',
+        primaryHover: '#268E34',
         secondaryHover: '#E4E4E7',
         outlineHover: '#D4D4D8',
         destructiveHover: '#B91C1C',
@@ -98,6 +98,7 @@ export default {
           'linear-gradient(180deg, rgba(71, 157, 233, 0.25) 0%, rgba(18, 75, 134, 0.25) 100%)',
         'custom-blend': 'linear-gradient(180deg, #7F7F7F80, #3D3D3D)',
         'primary-gradient': 'linear-gradient(135deg, #CE7411 0%, #8B4115 100%)',
+        'primary-grad': 'linear-gradient(135deg, hsla(246, 91%, 5%, 1) 0%, hsla(248, 95%, 8%, 1) 90%, hsla(218, 85%, 18%, 1) 100%)',
         'notepad': "url('../public/Images/Bg-image.svg')",
       },
       boxShadow: {

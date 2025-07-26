@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Apply scroll-based panel switch in TitleArea",
+			"command": "echo 'Apply scroll-based panel switch in TitleArea'",
+			"group": "build"
+		}
+	]
+}
