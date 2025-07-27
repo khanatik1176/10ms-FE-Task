@@ -1,17 +1,19 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import NavLogo from '../public/logo/navLogo.svg';
 import NavSearchBar from './navComponents/NavSearchBar';
 import NavList from './navComponents/NavList';
 import NavToggleBtn from './navComponents/NavToggleBtn';
 import NavPhone from './navComponents/NavPhone';
 import NavLoginBtn from './navComponents/NavLoginBtn';
-const Navbar = () => {
+import { NavbarProps } from '@/types/Navtypes';
+const Navbar:FC<NavbarProps> = ({setLang }) => {
   const [isEnglish, setIsEnglish] = useState(true);
 
-  const toggleLanguage = () => {
+  const handleToggleLanguage = () => {
     setIsEnglish(!isEnglish);
+    setLang(isEnglish ? 'bn' : 'en');
   };
 
   return (
@@ -25,7 +27,7 @@ const Navbar = () => {
           />
           <NavSearchBar />
           <NavList />
-          <NavToggleBtn toggleLanguage={toggleLanguage} isEnglish={isEnglish} />
+          <NavToggleBtn toggleLanguage={handleToggleLanguage} isEnglish={isEnglish} />
           <NavPhone />
           <NavLoginBtn />
         </div>

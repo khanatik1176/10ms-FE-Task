@@ -3,11 +3,11 @@ import { Check } from 'lucide-react';
 import Image from 'next/image';
 import { ExclusiveSectionProps } from '@/types/Landingtypes';
 
-const ExclusiveSection: FC<ExclusiveSectionProps> = ({ exclusiveList }) => {
+const ExclusiveSection: FC<ExclusiveSectionProps> = ({ exclusiveList, name }) => {
   return (
     <div className='pl-[350px] pt-10'>
       <h1 className='mb-4 text-2xl font-semibold leading-[30px] text-black'>
-        Course Exclusive Features
+        {name}
       </h1>
       <div className='w-full max-w-[730px] rounded-lg border bg-white p-5'>
         {exclusiveList.map((section, idx) => (

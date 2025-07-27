@@ -1,146 +1,40 @@
-![PentadevIX Logo](./public/logo/Logo.webp)
+# IELTS Course Product Page — 10MS FE TASK
 
-PentadevIX is a robust platform designed for analyzing and managing the performance and scalability of your software projects. It provides insights into bottlenecks, resource utilization, and optimization opportunities across different environments. Users can monitor projects to ensure efficient and high-performing development workflows.
+This project is a **Next.js** application developed for the **Frontend Engineer (Level 1)** assessment. The task was to design and develop a product page similar to the [IELTS Course by Munzereen Shahid](https://10minuteschool.com/product/ielts-course/) using **React**, **TypeScript**, **TailwindCSS**, and SSR/ISR functionalities.
 
-## Features
+The application fetches real-time product data from the **10 Minute School Public API** and renders a well-structured product landing page with reusable components and optimized performance.
 
-- **Performance Analysis:** Identify and optimize performance bottlenecks in your project.
-- **Resource Monitoring:** Track resource utilization and scalability metrics.
-- **Environment Insights:** Analyze and compare performance across different environments.
+## 🔗 Live Preview  
+> [View Live Site](https://your-live-link.com)
 
-## Branching Strategy
+---
 
-- **Test Branch:** Used for internal testing.
-- **Beta Branch:** Used for client testing.
-- **Development Branch:** Uses the naming convention `pentadevix-client-vX.00.00X`, where X changes based on iteration.
+## 🚀 Features
 
-## Configuration
+- ✅ **Title and Description** (HTML-supported)
+- ✅ **Product Trailer** via YouTube embed (from media array)
+- ✅ **Course Instructors** (from `sections` where `type=instructor`)
+- ✅ **What You Will Learn** (from `sections` where `type=pointers`)
+- ✅ **How the Course is Laid Out** (from `sections` where `type=features`)
+- ✅ **Course Details** (from `sections` where `type=about`)
+- ✅ **Checklist Highlights**
+- ✅ **CTA Text Display**
+- ✅ **Default Price (Static: 1000 BDT)**
+- ✅ **Localization** via `lang=en | bn`
+- ✅ **Server-side Rendering (SSR)**
+- ✅ **Reusable Component Architecture**
+- ✅ **Basic SEO** using API-provided metadata
 
-- The backend URLs and important keys/tokens are stored in the `.env` file.
-- After modifying the `.env` file, export the values from `config.ts` for proper integration.
-- An `.env.example` file is provided to illustrate the `.env` file structure.
+---
 
-## Technologies Used
+## 🔧 Technologies Used
 
-- **Framework:** Next.js
-- **Forms & Validation:** React Hook Form, Yup
-- **UI Components:** Material UI
-- **Networking:** Axios
-- **State Management:** Redux Toolkit
-- **Icons:** FontAwesome
-- **Authentication:** Firebase Auth
-- **Testing:** Cypress, Jest
-- **Code Quality Monitoring:** SonarQube
+- **Framework:** Next.js 15+
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **API Call:** Axios with custom headers
+- **Code Quality:** ESLint, Prettier
+- **Deployment:** Github
+- **Docker Support:** Dockerfile included
 
-## Getting Started
-
-First, install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
-## Deployment
-
-The recommended deployment platform is **Netlify**. Refer to the [Netlify Deployment Guide](https://docs.netlify.com/) for more details.
-
-### Deploying with Netlify CLI
-
-1. Install Netlify CLI if you haven’t already:
-   
-   ```bash
-   npm install -g netlify-cli
-   ```
-
-2. Login to Netlify:
-   
-   ```bash
-   netlify login
-   ```
-
-   Follow the prompts to authenticate with your Netlify account.
-
-3. Navigate to your project directory and deploy:
-   
-   ```bash
-   netlify deploy
-   ```
-
-   This will initialize the deployment process and prompt you with options.
-
-4. For deploying updates to production, use:
-   
-   ```bash
-   netlify deploy --prod
-   ```
-
-### Deploying to Development and Preview Environments
-
-- **Development Environment:**
-  
-  ```bash
-  netlify deploy --env development
-  ```
-  
-  This helps in testing changes before pushing them to production.
-
-- **Preview Deployment:**
-  
-  ```bash
-  netlify deploy --branch preview
-  ```
-  
-  This will deploy the branch as a preview, which can be shared and tested before going live.
-
-### Assigning a Custom Domain
-
-- **Add your domain to Netlify:**
-  
-  ```bash
-  netlify domains:add yourdomain.com
-  ```
-
-- **Update your DNS settings** by following the instructions provided by Netlify.
-
-- **Set the domain for production:**
-  
-  ```bash
-  netlify domains:set yourdomain.com
-  ```
-
-- **Verify the domain:**
-  
-  ```bash
-  netlify domains:inspect yourdomain.com
-  ```
-
-### Logging Out
-
-To log out of the Netlify CLI:
-
-```bash
-netlify logout
-```
-
-## Learn More
-
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Firebase Documentation](https://firebase.google.com/docs) - Authentication setup.
-- [Redux Toolkit Documentation](https://redux-toolkit.js.org/) - State management.
-- [Netlify Documentation](https://docs.netlify.com/) - Deployment and configuration guidance.
-
-PentadevIX aims to provide seamless performance monitoring and optimization for modern software development workflows.
+---

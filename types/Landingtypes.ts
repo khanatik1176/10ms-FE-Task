@@ -49,6 +49,7 @@ export type InstructorValue = {
 
 export type InstructorSection = {
   type?: 'instructors';
+  name: string;
   values: InstructorValue[];
 };
 
@@ -91,6 +92,7 @@ export type ExclusiveItem = {
 };
 
 export type ExclusiveSectionProps = {
+  name: string;
   exclusiveList: ExclusiveItem[];
 };
 
@@ -113,3 +115,9 @@ export type CourseDetailsSection = {
 export type CustomAccordionProps = {
   items: CourseDetails[];
 };
+
+export type CustomAvatarProps = {
+  src: string;
+  alt?: string;
+  size?: number;
+}

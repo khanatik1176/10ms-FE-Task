@@ -10,9 +10,10 @@ import { fetchAllData } from '@/helpers/LandingApi';
 import { useQuery } from '@tanstack/react-query';
 import Head from 'next/head';
 import Script from 'next/script';
+import { useState } from 'react';
 
 export default function Home() {
-  const lang = 'en';
+  const [lang, setLang] = useState<'en' | 'bn'>('en');
   const { data, isLoading, error } = useQuery({
     queryKey: ['ielts-course', lang],
     queryFn: () => fetchAllData(lang),
@@ -89,7 +90,10 @@ export default function Home() {
         ))}
       </Head>
       <div className={`min-h-screen`}>
-        <Navbar />
+        <Navbar
+          lang={lang}
+          setLang={setLang}
+        />{' '}
         <div className='mx-auto w-full max-w-[1920px]'>
           <TitleArea
             title={TitleDetails.title}
@@ -99,7 +103,10 @@ export default function Home() {
             checkList={checkList}
             isLoading={isLoading}
           />
-          <InstructorArea values={instructorList} />
+          <InstructorArea
+            name={instructorsSection?.name}
+            values={instructorList}
+          />
           <CourseLaidOutSection
             name={featureSection?.name}
             description={featureSection?.description}
@@ -108,7 +115,10 @@ export default function Home() {
             values={featureList}
           />
           <LearningArea name={learningSection?.name} values={learningList} />
-          <ExclusiveSection exclusiveList={exclusiveList} />
+          <ExclusiveSection
+            name={exclusiveSection?.name}
+            exclusiveList={exclusiveList}
+          />
           <CourseDetails
             name={courseDetailsSection?.name}
             type={courseDetailsSection?.type}
@@ -117,21 +127,6 @@ export default function Home() {
             order_idx={courseDetailsSection?.order_idx}
             values={courseDetailsList}
           />
-
-          <div>
-            {error && <p className='text-red-500'>Error loading data</p>}
-            {isLoading && <p className='text-gray-500'>Loading...</p>}
-            {!isLoading && !error && (
-              <p className='text-green-500'>Data loaded successfully!</p>
-            )}
-            <div>
-              {data && (
-                <pre className='whitespace-pre-wrap text-sm text-gray-600'>
-                  {JSON.stringify(data, null, 2)}
-                </pre>
-              )}
-            </div>
-          </div>
         </div>
       </div>
     </>
