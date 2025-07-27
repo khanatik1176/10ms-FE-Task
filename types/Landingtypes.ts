@@ -80,3 +80,36 @@ export type LearningSection = {
   name: string;
   values: LearningValues[];
 };
+
+export type ExclusiveItem = {
+  checklist: string[];
+  file_type: string;
+  file_url: string;
+  id: string;
+  title: string;
+  video_thumbnail: string;
+};
+
+export type ExclusiveSectionProps = {
+  exclusiveList: ExclusiveItem[];
+};
+
+export type CourseDetails = {
+  description: string;
+  icon: string;
+  id: string;
+  title: string;
+};
+
+export type CourseDetailsSection = {
+  type: 'about';
+  name: string;
+  description: string;
+  bg_color: string;
+  order_idx: number;
+  values: CourseDetails[];
+};
+
+export type CustomAccordionProps = {
+  items: CourseDetails[];
+};
