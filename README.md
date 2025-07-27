@@ -4,8 +4,8 @@ This project is a **Next.js** application developed for the **Frontend Engineer 
 
 The application fetches real-time product data from the **10 Minute School Public API** and renders a well-structured product landing page with reusable components and optimized performance.
 
-## 🔗 Live Preview  
-> [View Live Site](https://your-live-link.com)
+<!-- ## 🔗 Live Preview  
+> [View Live Site](https://your-live-link.com) -->
 
 ---
 
