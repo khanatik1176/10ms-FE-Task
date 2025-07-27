@@ -1,103 +1,134 @@
-import Image from "next/image";
+'use client';
+import CourseDetails from '@/components/CourseDetails';
+import CourseLaidOutSection from '@/components/CourseLaidOutSection';
+import ExclusiveSection from '@/components/ExclusiveSection';
+import InstructorArea from '@/components/InstructorArea';
+import LearningArea from '@/components/LearningArea';
+import Navbar from '@/components/Navbar';
+import TitleArea from '@/components/TitleArea';
+import { fetchAllData } from '@/helpers/LandingApi';
+import { useQuery } from '@tanstack/react-query';
+import Head from 'next/head';
+import Script from 'next/script';
+import { useState } from 'react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [lang, setLang] = useState<'en' | 'bn'>('en');
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['ielts-course', lang],
+    queryFn: () => fetchAllData(lang),
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const TitleDetails = {
+    title: data?.data?.title || '',
+    description: data?.data?.description || '',
+  };
+  const media = data?.data?.media || [];
+
+  const ctaText = data?.data?.cta_text || 'Enroll Now';
+
+  const checkList = data?.data?.checklist;
+
+  const instructorsSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'instructors'
+  );
+  const instructorList = instructorsSection?.values || [];
+
+  const featureSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'features'
+  );
+  const featureList = featureSection?.values || [];
+
+  const learningSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'pointers'
+  );
+  const learningList = learningSection?.values || [];
+
+  const exclusiveSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'feature_explanations'
+  );
+  const exclusiveList = exclusiveSection?.values || [];
+
+  const courseDetailsSection = data?.data?.sections?.find(
+    (section: any) => section.type === 'about'
+  );
+
+  const courseDetailsList = courseDetailsSection?.values || [];
+
+  const seo = data?.data?.seo;
+
+  return (
+    <>
+      <Head>
+        <title>{seo?.title || 'IELTS Course'}</title>
+        <meta name='description' content={seo?.description || ''} />
+        {(seo?.keywords || []).map((kw: string, idx: number) => (
+          <meta key={idx} name='keywords' content={kw} />
+        ))}
+        {(seo?.defaultMeta || []).map((meta: any, idx: number) => {
+          if (meta?.type === 'property') {
+            return (
+              <meta
+                key={idx}
+                property={meta.value}
+                content={meta.content || ''}
+              />
+            );
+          }
+          return (
+            <meta key={idx} name={meta.value} content={meta.content || ''} />
+          );
+        })}
+        {(seo?.schema || []).map((schema: any, idx: number) => (
+          // eslint-disable-next-line react/no-danger
+          <Script
+            key={idx}
+            id={`ld-json-schema-${idx}`}
+            type='application/ld+json'
+            dangerouslySetInnerHTML={{ __html: schema.meta_value || '' }}
+          />
+        ))}
+      </Head>
+      <div className={`min-h-screen`}>
+        <Navbar
+          lang={lang}
+          setLang={setLang}
+        />{' '}
+        <div className='mx-auto w-full max-w-[1920px]'>
+          <TitleArea
+            title={TitleDetails.title}
+            description={TitleDetails.description}
+            media={media}
+            ctaText={ctaText}
+            checkList={checkList}
+            isLoading={isLoading}
+          />
+          <InstructorArea
+            name={instructorsSection?.name}
+            values={instructorList}
+          />
+          <CourseLaidOutSection
+            name={featureSection?.name}
+            description={featureSection?.description}
+            bg_color={featureSection?.bg_color}
+            order_idx={featureSection?.order_idx}
+            values={featureList}
+          />
+          <LearningArea name={learningSection?.name} values={learningList} />
+          <ExclusiveSection
+            name={exclusiveSection?.name}
+            exclusiveList={exclusiveList}
+          />
+          <CourseDetails
+            name={courseDetailsSection?.name}
+            type={courseDetailsSection?.type}
+            description={courseDetailsSection?.description}
+            bg_color={courseDetailsSection?.bg_color}
+            order_idx={courseDetailsSection?.order_idx}
+            values={courseDetailsList}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }

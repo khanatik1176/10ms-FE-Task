@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IELTS Course Product Page — 10MS FE TASK
 
-## Getting Started
+This project is a **Next.js** application developed for the **Frontend Engineer (Level 1)** assessment. The task was to design and develop a product page similar to the [IELTS Course by Munzereen Shahid](https://10minuteschool.com/product/ielts-course/) using **React**, **TypeScript**, **TailwindCSS**, and SSR/ISR functionalities.
 
-First, run the development server:
+The application fetches real-time product data from the **10 Minute School Public API** and renders a well-structured product landing page with reusable components and optimized performance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔗 Live Preview  
+> [View Live Site](https://your-live-link.com)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ **Title and Description** (HTML-supported)
+- ✅ **Product Trailer** via YouTube embed (from media array)
+- ✅ **Course Instructors** (from `sections` where `type=instructor`)
+- ✅ **What You Will Learn** (from `sections` where `type=pointers`)
+- ✅ **How the Course is Laid Out** (from `sections` where `type=features`)
+- ✅ **Course Details** (from `sections` where `type=about`)
+- ✅ **Checklist Highlights**
+- ✅ **CTA Text Display**
+- ✅ **Default Price (Static: 1000 BDT)**
+- ✅ **Localization** via `lang=en | bn`
+- ✅ **Server-side Rendering (SSR)**
+- ✅ **Reusable Component Architecture**
+- ✅ **Basic SEO** using API-provided metadata
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework:** Next.js 15+
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **API Call:** Axios with custom headers
+- **Code Quality:** ESLint, Prettier
+- **Deployment:** Github
+- **Docker Support:** Dockerfile included
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
